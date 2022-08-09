@@ -5,6 +5,10 @@ cloudsAndTailwindPractice.html
 wavesInTheLake.html
 tailwind.config.js
 
+assets/medidasTailwind.png
+testDroneTailwind.html
+testLayoutsTailwind.html
+
 # [Logs]
 logs
 *.log

@@ -5,23 +5,20 @@
   <meta charset='UTF-8' />
   <title>Rodrigo Moreno aka CheatModes4</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <meta name='robots' content='follow, index' />
-  <meta name='description'
-    content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH ' />
-  <meta property='og:url' content='https://keepsimpleweb.github.io' />
+  <meta name='robots'   content='follow, index' />
+  <meta name='description' content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH ' />
+  <meta property='og:url'  content='https://keepsimpleweb.github.io' />
   <meta property='og:type' content='website' />
-  <meta property='og:site_name' content='Rodrigo Moreno aka CheatModes4' />
-  <meta property='og:description'
-    content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH ' />
-  <meta property='og:title' content='Rodrigo Moreno' />
-  <meta property='og:image' content='https://pbs.twimg.com/profile_images/1490328824411787264/aZ4btbsP_400x400.jpg' />
+  <meta property='og:site_name'   content='Rodrigo Moreno aka CheatModes4' />
+  <meta property='og:description' content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH ' />
+  <meta property='og:title'  content='Rodrigo Moreno' />
+  <meta property='og:image'  content='https://pbs.twimg.com/profile_images/1490328824411787264/aZ4btbsP_400x400.jpg' />
   <meta property='og:locale' content='es_ES' />
-  <meta name='twitter:card' content='summary_large_image' />
+  <meta name='twitter:card'  content='summary_large_image' />
   <meta name='twitter:title' content='Rodrigo Moreno aka CheatModes4' />
-  <meta name='twitter:description'
-    content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH' />
-  <meta name='twitter:image' content='https://pbs.twimg.com/profile_images/1490328824411787264/aZ4btbsP_400x400.jpg' />
-  <meta name='twitter:site' content='@CheatModes4' />
+  <meta name='twitter:description' content='Learning Engineer at @platzi - Frontend Developer - #JavaScript #TypeScript #Html5 #Css3 #React #Next #Nvim #Web3 #BTC #ETH' />
+  <meta name='twitter:image'   content='https://pbs.twimg.com/profile_images/1490328824411787264/aZ4btbsP_400x400.jpg' />
+  <meta name='twitter:site'    content='@CheatModes4' />
   <meta name='twitter:creator' content='@CheatModes4' />
   <link href='https://rroderickk.github.io/cv2/public/cef7538c16a1bd7513c4.png' rel='icon' type='image/png' />
 
@@ -172,6 +169,28 @@
       100% {
         transform: rotate(360deg);
       }
+    }
+
+    /* ::::::::::::::: ::::::: :::::::::::::: */
+    /* ::::::::::::::: @CLOUDS :::::::::::::: */
+    /* ::::::::::::::: ::::::: :::::::::::::: */
+
+    body:after {
+      content: '';
+      font-size: .8em;
+      color: rgba(10, 10, 10, .9);
+      position: fixed;
+      width: 100%;
+      bottom: 1em;
+      text-align: center;
+    }
+
+    #cloud {
+      overflow: hidden;
+      width: 1px; height: 1px;
+      transform: translate(100%, 100%);
+      border-radius: 50%;
+      filter: url(#filter);
     }
   </style>
 
@@ -413,11 +432,54 @@
         </div>
       </div>
     </div>
+    <div class='max-w-xl p-4 mx-auto mt-2 text-center flex-block md:pd-8'>
+      🍻 Made with love in <span class='text-neutral-50'>Colombia</span> 🍻
+    </div>
+
+    <!-- ------------------------------------------ -->
+    <!-- ------------- @CLOUDS -------------------- -->
+    <!-- ------------------------------------------ -->
+
+    <div id="cloud"></div>
+    <svg width="0">
+      <filter id="filter">
+        <feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="10" />
+        <feDisplacementMap in="SourceGraphic" scale="240" />
+      </filter>
+    </svg>
   </main>
-  <div class='max-w-xl p-4 mx-auto mt-2 text-center flex-block md:pd-8'>
-    🍻 Made with love in <span class='text-neutral-50'>Colombia</span> 🍻
-  </div>
-  <!-- <script data-cfasync='false' src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js'></script> -->
+
+  <script>
+
+    function rn(from, to) {
+      return ~~(Math.random() * (to - from + 1)) + from;
+    }
+
+    function rs() {
+      return arguments[rn(1, arguments.length) - 1];
+    }
+
+    function boxShadows(max) {
+      let ret = [];
+      for (let i = 0; i < max; ++i) {
+        ret.push(`
+          ${ rn(1, 100) }vw ${ rn(1, 100) }vh ${ rn(20, 40) }vmin ${ rn(1, 20) }vmin
+          ${ rs('#11cbd7', '#c6f1e7', '#f0fff3', '#fa4659') }
+        `)
+      }
+      return ret.join(',');
+    }
+
+    const cloud = document.querySelector('#cloud');
+
+    function update() {
+      cloud.style.boxShadow = boxShadows(13); 
+    }
+
+    window.addEventListener('load', update); 
+    document.addEventListener('click', update); 
+
+  </script>
 </body>
 
 </html>
